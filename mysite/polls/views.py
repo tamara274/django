@@ -5,6 +5,12 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, render
 from .models import Question
 
+from django.contrib import admin
+
+from .models import Question
+
+admin.site.register(Question)
+
 def index(request):
     latest_question_list = Question.objects.order_by("-pub_date")[:5]
     output = "<br>".join(["<p>" + q.question_text + "</p>" for q in latest_question_list])
